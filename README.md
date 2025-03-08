@@ -25,19 +25,26 @@ ni -D unocss-preset-animations unocss-preset-shadcn
 
 ```ts
 // unocss.config.ts
-import { defineConfig, presetUno } from 'unocss'
-import presetAnimations from 'unocss-preset-animations'
-import { presetShadcn } from 'unocss-preset-shadcn'
+import { presetWind } from "@unocss/preset-wind3";
+import { defineConfig } from "unocss";
+import presetAnimations from "unocss-preset-animations";
+import { presetShadcn } from "unocss-preset-shadcn";
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetWind(),
     presetAnimations(),
-    presetShadcn({
-      color: 'red',
-      // With default setting for SolidUI, you need to set the darkSelector option.
-      darkSelector: '[data-kb-theme="dark"]',
-    }),
+    presetShadcn(
+      {
+        color: "red",
+        // With default setting for SolidUI, you need to set the darkSelector option.
+        darkSelector: '[data-kb-theme="dark"]',
+      },
+      {
+        // If you are using reka ui.
+        componentLibrary: "reka",
+      }
+    ),
   ],
   // By default, `.ts` and `.js` files are NOT extracted.
   // If you want to extract them, use the following configuration.
@@ -48,11 +55,11 @@ export default defineConfig({
         // the default
         /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
         // include js/ts files
-        '(components|src)/**/*.{js,ts}',
+        "(components|src)/**/*.{js,ts}",
       ],
     },
   },
-})
+});
 ```
 
 > [!IMPORTANT]
@@ -70,6 +77,8 @@ export default defineConfig({
    - `npx solidui-cli@latest add button` for SolidUI.
 
 > [!WARNING]
+> You may need an empty `tailwind.config.js` file in your project root to make cli commands happy.
+>
 > If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
 
 ## Code to copy
@@ -77,12 +86,12 @@ export default defineConfig({
 `utils.ts`: this file usually under `src/lib` folder.
 
 ```ts
-import type { ClassValue } from 'clsx'
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import type { ClassValue } from "clsx";
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 
@@ -177,9 +186,9 @@ Preview the [demo](https://unocss-preset-shadcn.vercel.app).
 If you want to use a dynamic theme, you can pass an array of theme objects to `presetShadcn`:
 
 ```ts
-import { defineConfig, presetUno, UserConfig } from 'unocss'
-import presetAnimations from 'unocss-preset-animations'
-import { builtinColors, presetShadcn } from 'unocss-preset-shadcn'
+import { defineConfig, presetUno, UserConfig } from "unocss";
+import presetAnimations from "unocss-preset-animations";
+import { builtinColors, presetShadcn } from "unocss-preset-shadcn";
 
 export default defineConfig({
   presets: [
@@ -187,7 +196,7 @@ export default defineConfig({
     presetAnimations(),
     presetShadcn(builtinColors.map((c) => ({ color: c }))),
   ],
-})
+});
 ```
 
 Add a theme sync script to your [index.html](./playground/index.html).
