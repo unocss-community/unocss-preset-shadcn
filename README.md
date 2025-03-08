@@ -20,7 +20,8 @@ Install the [Tailwind Browser Style Reset](https://unocss.dev/guide/style-reset#
 Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `unocss.config.ts`:
 
 ```bash
-ni -D unocss-preset-animations unocss-preset-shadcn
+ni @unocss/reset
+ni -D unocss @unocss/preset-wind3 unocss-preset-animations unocss-preset-shadcn
 ```
 
 ```ts
