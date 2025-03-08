@@ -47,13 +47,23 @@ describe('presetShadcn()-execute-getCSS', () => {
   })
 
   it('disable global styles', async () => {
-    const presetReturn = presetShadcn(undefined, false)
+    const presetReturn = presetShadcn(undefined, { globals: false })
     // Don't think this is needed for now
     // await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-disable_global_styles.json')
 
     await expect(
       presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
     ).toMatchFileSnapshot('snapshot/presetShadcn()-disable_global_styles-getCSS.css')
+  })
+
+  it('use reka ui', async () => {
+    const presetReturn = presetShadcn(undefined, { componentLibrary: 'reka' })
+    // Don't think this is needed for now
+    // await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-disable_global_styles.json')
+
+    await expect(
+      presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
+    ).toMatchFileSnapshot('snapshot/presetShadcn()-use_reka_ui-getCSS.css')
   })
 })
 

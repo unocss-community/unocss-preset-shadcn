@@ -2,7 +2,7 @@ import { mergeDeep } from 'unocss'
 
 import type { ThemeCSSVarKey, ThemeCSSVars, ThemeCSSVarsVariant } from './themes'
 import { themeCSSVarKeys, themes } from './themes'
-import type { ColorOptions, PresetShadcnOptions } from './types'
+import type { ColorOptions, PresetShadcnThemeOptions } from './types'
 
 function generateColorCSSVars(color: ThemeCSSVars) {
   return Object.entries(color)
@@ -82,7 +82,7 @@ function getColorTheme(color: ColorOptions) {
 }
 
 export function generateCSSVars(
-  theme: PresetShadcnOptions,
+  theme: PresetShadcnThemeOptions,
   onlyOne = true,
 ): string {
   if (Array.isArray(theme))

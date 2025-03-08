@@ -3,27 +3,28 @@ import type { Theme } from 'unocss/preset-mini'
 
 import { generateCSSVars, generateGlobalStyles } from './generate'
 import { themes } from './themes'
-import type { PresetShadcnOptions } from './types'
+import type { PresetShadcnControlOptions, PresetShadcnThemeOptions } from './types'
 
 export const builtinColors = themes.map(theme => theme.name)
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
 
-/**
- * @param globals Generates global variables, like *.border-color, body.color, body.background.
- * @default true
- */
-export function presetShadcn(options: PresetShadcnOptions = {}, globals = true): Preset<Theme> {
+export function presetShadcn(
+  themeOptions: PresetShadcnThemeOptions = {},
+  controlOptions: PresetShadcnControlOptions = {},
+): Preset<Theme> {
+  const { globals = true, componentLibrary = 'radix' } = controlOptions
+
   return {
     name: 'unocss-preset-shadcn',
     preflights: [
       {
         getCSS: () => `
-          @keyframes shadcn-down { from{ height: 0 } to { height: var(--radix-accordion-content-height)} }
-          @keyframes shadcn-up { from{ height: var(--radix-accordion-content-height)} to { height: 0 } }
-          @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--radix-collapsible-content-height)} }
-          @keyframes shadcn-collapsible-up { from{ height: var(--radix-collapsible-content-height)} to { height: 0 } }
+          @keyframes shadcn-down { from{ height: 0 } to { height: var(--${componentLibrary}-accordion-content-height)} }
+          @keyframes shadcn-up { from{ height: var(--${componentLibrary}-accordion-content-height)} to { height: 0 } }
+          @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--${componentLibrary}-collapsible-content-height)} }
+          @keyframes shadcn-collapsible-up { from{ height: var(--${componentLibrary}-collapsible-content-height)} to { height: 0 } }
 
-          ${generateCSSVars(options)}
+          ${generateCSSVars(themeOptions)}
 
           ${globals ? generateGlobalStyles() : ''}
         `,
