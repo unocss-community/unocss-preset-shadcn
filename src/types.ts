@@ -26,4 +26,17 @@ export interface ThemeOptions {
   darkSelector?: string
 }
 
-export type PresetShadcnOptions = ArrayOrSingle<ThemeOptions>
+export type PresetShadcnThemeOptions = ArrayOrSingle<ThemeOptions>
+
+export interface PresetShadcnControlOptions {
+  /**
+   * @param Generates global variables, like *.border-color, body.color, body.background.
+   * @default true
+   */
+  globals?: boolean
+
+  /**
+   * @default 'radix'
+   */
+  componentLibrary?: 'radix' | 'reka'
+}
