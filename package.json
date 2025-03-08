@@ -2,17 +2,17 @@
   "name": "unocss-preset-shadcn",
   "type": "module",
   "version": "0.3.2",
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.6.1",
   "description": "use shadcn ui with unocss",
   "author": "Stephen Zhou <hi@hyoban.cc>",
   "license": "MIT",
-  "homepage": "https://github.com/hyoban/unocss-preset-shadcn#readme",
+  "homepage": "https://github.com/unocss-community/unocss-preset-shadcn#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyoban/unocss-preset-shadcn"
+    "url": "https://github.com/unocss-community/unocss-preset-shadcn"
   },
-  "bugs": "https://github.com/hyoban/unocss-preset-shadcn/issues",
-  "keywords": [],
+  "bugs": "https://github.com/unocss-community/unocss-preset-shadcn/issues",
+  "keywords": ["unocss", "shadcn"],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -55,22 +55,22 @@
     "unocss-preset-animations": "^1.1.1"
   },
   "devDependencies": {
-    "@antfu/ni": "^23.2.0",
-    "@antfu/utils": "^8.1.0",
-    "@types/node": "^22.10.7",
-    "@unocss/preset-mini": "^65.4.2",
-    "eslint": "^9.18.0",
-    "eslint-config-hyoban": "3.2.0",
-    "lint-staged": "^15.4.1",
-    "pnpm": "^9.15.4",
-    "release-it": "^18.1.1",
+    "@antfu/ni": "^23.3.1",
+    "@antfu/utils": "^9.1.0",
+    "@types/node": "^22.13.9",
+    "@unocss/preset-mini": "^66.1.0-beta.3",
+    "eslint": "^9.22.0",
+    "eslint-config-hyoban": "^3.2.2",
+    "lint-staged": "^15.4.3",
+    "pnpm": "^10.6.1",
+    "release-it": "^18.1.2",
     "release-it-pnpm": "^4.6.4",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.7.3",
-    "unbuild": "^3.3.1",
-    "unocss": "^65.4.2",
-    "vite": "^6.0.11",
-    "vitest": "^3.0.3"
+    "typescript": "^5.8.2",
+    "unbuild": "^3.5.0",
+    "unocss": "^66.1.0-beta.3",
+    "vite": "^6.2.1",
+    "vitest": "^3.0.8"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
