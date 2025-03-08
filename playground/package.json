@@ -9,27 +9,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.2",
-    "@radix-ui/react-slot": "^1.1.1",
-    "@unocss/reset": "^65.4.2",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@unocss/reset": "^65.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "foxact": "^0.2.43",
+    "foxact": "^0.2.44",
     "jotai-dark": "^0.4.0",
-    "lucide-react": "^0.473.0",
+    "lucide-react": "^0.479.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.24",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
+    "@iconify-json/lucide": "^1.2.28",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
-    "typescript": "^5.7.3",
-    "unocss": "^65.4.2",
+    "typescript": "^5.8.2",
+    "unocss": "^65.5.0",
     "unocss-preset-animations": "^1.1.1",
     "unocss-preset-shadcn": "workspace:^",
-    "vite": "^6.0.11"
+    "vite": "^6.2.1"
   }
 }
