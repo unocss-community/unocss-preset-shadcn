@@ -91,6 +91,26 @@ export function presetShadcn(
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        chart1: 'hsl(var(--chart1))',
+        chart2: 'hsl(var(--chart2))',
+        chart3: 'hsl(var(--chart3))',
+        chart4: 'hsl(var(--chart4))',
+        chart5: 'hsl(var(--chart5))',
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          background: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: {
+            DEFAULT: 'hsl(var(--sidebar-primary))',
+            foreground: 'hsl(var(--sidebar-primary-foreground))',
+          },
+          accent: {
+            DEFAULT: 'hsl(var(--sidebar-accent))',
+            foreground: 'hsl(var(--sidebar-accent-foreground))',
+          },
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 4px)',
