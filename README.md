@@ -1,3 +1,7 @@
+<p align="left">
+  <img align="center" with="80" height="80" src="https://raw.githubusercontent.com/fisand/unocss-preset-shadcn/refs/heads/main/public/logo.svg" />
+</p>
+
 # unocss-preset-shadcn
 
 [![npm version][npm-version-src]][npm-version-href]
