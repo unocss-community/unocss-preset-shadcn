@@ -1,8 +1,9 @@
 import { createGenerator } from 'unocss'
 import { describe, expect, it } from 'vitest'
 
-import presetShadcn from '../src'
 import { generateCSSVars } from '../src/generate'
+import { themes as themesV3 } from '../src/themes/v3'
+import presetShadcn from '../src/v3'
 
 const unoGenerator = await createGenerator()
 
@@ -73,13 +74,13 @@ describe('generate-theme-css-var', () => {
       generateCSSVars({
         color: 'zinc',
         radius: 0.5,
-      }),
+      }, themesV3),
     ).toMatchFileSnapshot('snapshot/zinc-0.5.css')
     await expect(
       generateCSSVars({
         color: 'neutral',
         radius: 0.75,
-      }),
+      }, themesV3),
     ).toMatchFileSnapshot('snapshot/neutral-0.75.css')
   })
 
@@ -158,7 +159,7 @@ describe('generate-theme-css-var', () => {
           },
         },
         radius: 1,
-      }),
+      }, themesV3),
     ).toMatchFileSnapshot('snapshot/custom.css')
   })
 
@@ -172,7 +173,7 @@ describe('generate-theme-css-var', () => {
           },
         },
         radius: 1,
-      }),
+      }, themesV3),
     ).toMatchFileSnapshot('snapshot/custom.css')
   })
 
@@ -187,7 +188,7 @@ describe('generate-theme-css-var', () => {
           color: 'neutral',
           radius: 0.75,
         },
-      ]),
+      ], themesV3),
     ).toMatchFileSnapshot('snapshot/multiple.css')
   })
 
@@ -195,7 +196,7 @@ describe('generate-theme-css-var', () => {
     await expect(
       generateCSSVars({
         darkSelector: '.custom-dark',
-      }),
+      }, themesV3),
     ).toMatchFileSnapshot('snapshot/dark-selector.css')
   })
 })
