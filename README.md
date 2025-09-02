@@ -17,6 +17,8 @@ Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) o
 
 ## Usage
 
+> 🌈 Starting from v1.0, unocss-preset-shadcn supports presetWind4 v4 by default. If you are using presetWind3, you can import the legacy preset from `unocss-preset-shadcn/v3`
+
 Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation), or [SolidUI](https://www.solid-ui.com/docs/installation/manual). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
 
 Install the [Tailwind Browser Style Reset](https://unocss.dev/guide/style-reset#tailwind).
