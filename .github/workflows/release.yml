@@ -1,9 +1,5 @@
 name: Release
 
-permissions:
-  id-token: write
-  contents: write
-
 on:
   push:
     tags:
@@ -11,22 +7,32 @@ on:
 
 jobs:
   release:
+    permissions:
+      id-token: write
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Set node
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
 
-      - run: pnpm dlx changelogithub
+      - run: npx changelogithub
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - run: pnpm install
-      - run: pnpm publish --no-git-checks -r --access public
-        env:
-          NPM_CONFIG_PROVENANCE: true
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Publish to NPM
+        run: npm install -g npm@latest && pnpm publish --no-git-checks
