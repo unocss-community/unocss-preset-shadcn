@@ -1,6 +1,6 @@
 import type { DeepPartial } from 'unocss'
 
-import type { Theme as ShadcnTheme, ThemeCSSVarsVariant } from './themes'
+import type { Theme as ShadcnTheme, ThemeCSSVarsVariant } from './themes/v3'
 
 export type ShadcnThemeColor = ShadcnTheme['name']
 

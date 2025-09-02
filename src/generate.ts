@@ -1,7 +1,7 @@
 import { mergeDeep } from 'unocss'
 
-import type { ThemeCSSVarKey, ThemeCSSVars, ThemeCSSVarsVariant } from './themes'
-import { themeCSSVarKeys, themes } from './themes'
+import type { ThemeCSSVarKey, ThemeCSSVars, ThemeCSSVarsVariant, themes } from './themes/v3'
+import { themeCSSVarKeys } from './themes/v3'
 import type { ColorOptions, PresetShadcnThemeOptions } from './types'
 
 function generateColorCSSVars(color: ThemeCSSVars) {
@@ -38,7 +38,7 @@ ${generateRadiusCSSVars(radius)}
 `
 }
 
-export function generateGlobalStyles() {
+export function generateGlobalStylesV3() {
   return `
 * {
   border-color: hsl(var(--border));
@@ -51,8 +51,21 @@ body {
 `
 }
 
-function getBuiltInTheme(name: string): ThemeCSSVarsVariant {
-  const theme = themes.find(t => t.name === name)
+export function generateGlobalStyles() {
+  return `
+* {
+  border-color: oklch(var(--border));
+}
+
+body {
+  color: oklch(var(--foreground));
+  background: oklch(var(--background));
+}
+  `
+}
+
+function getBuiltInTheme(name: string, themesRaw: typeof themes): ThemeCSSVarsVariant {
+  const theme = themesRaw.find(t => t.name === name)
   if (!theme)
     throw new Error(`Unknown color: ${name}`)
   return {
@@ -61,18 +74,18 @@ function getBuiltInTheme(name: string): ThemeCSSVarsVariant {
   }
 }
 
-function getColorTheme(color: ColorOptions) {
+function getColorTheme(color: ColorOptions, themesRaw: typeof themes) {
   let light: ThemeCSSVars
   let dark: ThemeCSSVars
   let name: string
 
   if (typeof color === 'string') {
     name = color
-    ;({ light, dark } = getBuiltInTheme(color))
+    ;({ light, dark } = getBuiltInTheme(color, themesRaw))
   }
   else if ('base' in color) {
     name = color.base
-    ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base), color))
+    ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base, themesRaw), color))
   }
   else {
     name = color.name
@@ -83,10 +96,11 @@ function getColorTheme(color: ColorOptions) {
 
 export function generateCSSVars(
   theme: PresetShadcnThemeOptions,
+  themesRaw: typeof themes,
   onlyOne = true,
 ): string {
   if (Array.isArray(theme))
-    return theme.map(t => generateCSSVars(t, false)).join('\n')
+    return theme.map(t => generateCSSVars(t, themesRaw, false)).join('\n')
 
   const { color = 'zinc', radius = 0.5, darkSelector = '.dark' } = theme
 
@@ -97,7 +111,7 @@ export function generateCSSVars(
       cssStyle += radiusCSSVarsStyles(radius)
   }
   else {
-    const { light, dark, name } = getColorTheme(color)
+    const { light, dark, name } = getColorTheme(color, themesRaw)
     const lightVars = generateColorCSSVars(light)
     const darkVars = generateColorCSSVars(dark)
 

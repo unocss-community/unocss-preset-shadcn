@@ -1,15 +1,14 @@
 import type { Preset } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 
-import { generateCSSVars, generateGlobalStyles } from './generate'
-import type { themes as themesV3 } from './themes/v3'
-import { themes } from './themes/v4'
+import { generateCSSVars, generateGlobalStylesV3 as generateGlobalStyles } from './generate'
+import { themes } from './themes/v3'
 import type { PresetShadcnControlOptions, PresetShadcnThemeOptions } from './types'
 
 export const builtinColors = themes.map(theme => theme.name)
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
 
-export function presetShadcn(
+export function presetShadcnV3(
   themeOptions: PresetShadcnThemeOptions = {},
   controlOptions: PresetShadcnControlOptions = {},
 ): Preset<Theme> {
@@ -25,7 +24,7 @@ export function presetShadcn(
           @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--${componentLibrary}-collapsible-content-height)} }
           @keyframes shadcn-collapsible-up { from{ height: var(--${componentLibrary}-collapsible-content-height)} to { height: 0 } }
 
-          ${generateCSSVars(themeOptions, themes as unknown as typeof themesV3)}
+          ${generateCSSVars(themeOptions, themes)}
 
           ${globals ? generateGlobalStyles() : ''}
         `,
@@ -59,58 +58,58 @@ export function presetShadcn(
     ],
     theme: {
       colors: {
-        border: 'oklch(var(--border))',
-        input: 'oklch(var(--input))',
-        ring: 'oklch(var(--ring))',
-        background: 'oklch(var(--background))',
-        foreground: 'oklch(var(--foreground))',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'oklch(var(--primary))',
-          foreground: 'oklch(var(--primary-foreground))',
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'oklch(var(--secondary))',
-          foreground: 'oklch(var(--secondary-foreground))',
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
-          DEFAULT: 'oklch(var(--destructive))',
-          foreground: 'oklch(var(--destructive-foreground))',
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
-          DEFAULT: 'oklch(var(--muted))',
-          foreground: 'oklch(var(--muted-foreground))',
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'oklch(var(--accent))',
-          foreground: 'oklch(var(--accent-foreground))',
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
-          DEFAULT: 'oklch(var(--popover))',
-          foreground: 'oklch(var(--popover-foreground))',
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
         card: {
-          DEFAULT: 'oklch(var(--card))',
-          foreground: 'oklch(var(--card-foreground))',
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
-        chart1: 'oklch(var(--chart1))',
-        chart2: 'oklch(var(--chart2))',
-        chart3: 'oklch(var(--chart3))',
-        chart4: 'oklch(var(--chart4))',
-        chart5: 'oklch(var(--chart5))',
+        chart1: 'hsl(var(--chart1))',
+        chart2: 'hsl(var(--chart2))',
+        chart3: 'hsl(var(--chart3))',
+        chart4: 'hsl(var(--chart4))',
+        chart5: 'hsl(var(--chart5))',
         sidebar: {
-          DEFAULT: 'oklch(var(--sidebar-background))',
-          background: 'oklch(var(--sidebar-background))',
-          foreground: 'oklch(var(--sidebar-foreground))',
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          background: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
           primary: {
-            DEFAULT: 'oklch(var(--sidebar-primary))',
-            foreground: 'oklch(var(--sidebar-primary-foreground))',
+            DEFAULT: 'hsl(var(--sidebar-primary))',
+            foreground: 'hsl(var(--sidebar-primary-foreground))',
           },
           accent: {
-            DEFAULT: 'oklch(var(--sidebar-accent))',
-            foreground: 'oklch(var(--sidebar-accent-foreground))',
+            DEFAULT: 'hsl(var(--sidebar-accent))',
+            foreground: 'hsl(var(--sidebar-accent-foreground))',
           },
-          border: 'oklch(var(--sidebar-border))',
-          ring: 'oklch(var(--sidebar-ring))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
         },
       },
       borderRadius: {
@@ -123,4 +122,4 @@ export function presetShadcn(
   }
 }
 
-export default presetShadcn
+export default presetShadcnV3

@@ -27,6 +27,16 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./v3": {
+      "import": {
+        "types": "./dist/v3.d.mts",
+        "default": "./dist/v3.mjs"
+      },
+      "require": {
+        "types": "./dist/v3.d.cts",
+        "default": "./dist/v3.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",
@@ -65,7 +75,6 @@
     "eslint": "^9.22.0",
     "eslint-config-hyoban": "^4.0.1",
     "lint-staged": "^15.5.0",
-    "pnpm": "^10.6.2",
     "release-it": "^18.1.2",
     "release-it-pnpm": "^4.6.4",
     "simple-git-hooks": "^2.11.1",
