@@ -109,7 +109,7 @@ React + shadcn-ui
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
+  "style": "new-york",
   "tailwind": {
     "config": "tailwind.config.js",
     "css": "styles/global.css",
